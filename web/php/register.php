@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':password', $password);
     if ($stmt->execute()) {
         $_SESSION['username'] = $username;
-        header("Location: dashboard.html");
+        header("Location: ../html/dashboard.html");
     } else {
         echo "Erro no registro!";
     }

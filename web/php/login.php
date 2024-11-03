@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->rowCount() > 0) {
         $_SESSION['username'] = $username;
-        header("Location: dashboard.html");
+        header("Location: dashboard.php");
     } else {
         echo "Login inválido!";
     }
