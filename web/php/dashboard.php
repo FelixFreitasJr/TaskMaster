@@ -1,14 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: ../html/login.html");
+    header("Location: login.html");
     exit();
 }
 
 $host = 'udewqztaiamosvawtzdv.supabase.co';
 $db = 'postgres';
 $user = 'postgres';
-$password = 'YOUR_SUPABASE_PASSWORD'; // Substitua pela sua senha segura
+$password = '(*)Amnnp2980'; // Substitua pela sua chave de serviço
 
 try {
     $conn = new PDO("pgsql:host=$host;dbname=$db", $user, $password);
@@ -17,6 +17,9 @@ try {
     echo "Connection failed: " . $e->getMessage();
     exit();
 }
+
+$result = $conn->query("SELECT * FROM tasks WHERE username='" . $_SESSION['username'] . "'");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,42 +28,37 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - TaskMaster</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/db.js"></script>
+    <script type="module" src="../js/db.js"></script>
 </head>
 <body>
     <h2>Bem-vindo, <?php echo $_SESSION['username']; ?>!</h2>
     <h3>Suas Tarefas:</h3>
     <ul id="task-list">
-        <?php
-        $result = $conn->query("SELECT * FROM tasks WHERE username='" . $_SESSION['username'] . "'");
-        while ($task = $result->fetch(PDO::FETCH_ASSOC)) {
-            echo '<li>' . $task['title'] . ' - ' . $task['status'] . '</li>';
-        }
-        ?>
+        <?php while ($task = $result->fetch(PDO::FETCH_ASSOC)): ?>
+        <li><?php echo $task['title']; ?> - <?php echo $task['status']; ?></li>
+        <?php endwhile; ?>
     </ul>
     <a href="logout.php">Logout</a>
-    <script>
-        // Exemplo de código JS adicional, caso precise carregar mais dados
-        async function fetchTasks() {
+    <script type="module">
+        import { supabase } from '../js/db.js';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const taskList = document.getElementById('task-list');
             const { data: tasks, error } = await supabase
                 .from('tasks')
                 .select('*')
                 .eq('username', '<?php echo $_SESSION['username']; ?>')
 
             if (error) {
-                console.error('Erro ao carregar tarefas:', error)
+                console.error('Erro ao carregar tarefas:', error);
             } else {
-                const taskList = document.getElementById('task-list');
-                taskList.innerHTML = '';
                 tasks.forEach(task => {
                     const taskItem = document.createElement('li');
                     taskItem.textContent = `${task.title} - ${task.status}`;
                     taskList.appendChild(taskItem);
                 });
             }
-        }
-
-        fetchTasks();
+        });
     </script>
 </body>
 </html>

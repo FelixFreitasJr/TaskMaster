@@ -4,7 +4,7 @@ session_start();
 $host = 'udewqztaiamosvawtzdv.supabase.co';
 $db = 'postgres';
 $user = 'postgres';
-$password = 'YOUR_SUPABASE_PASSWORD'; // Substitua pela sua senha segura
+$password = '(*)Amnnp2980'; // Substitua pela sua senha segura
 
 try {
     $conn = new PDO("pgsql:host=$host;dbname=$db", $user, $password);

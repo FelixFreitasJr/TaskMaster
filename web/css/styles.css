@@ -14,25 +14,28 @@ body {
 h2 {
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
-form {
+p {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+form, .buttons {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-input {
-    display: block;
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+.buttons a {
+    text-decoration: none;
+    width: 100%;
 }
 
 button {
@@ -43,6 +46,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 button:hover {
