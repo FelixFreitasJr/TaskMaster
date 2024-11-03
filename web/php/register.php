@@ -2,7 +2,7 @@
 session_start();
 
 $user = 'postgres.udewqztaiamosvawtzdv';
-$password = 'Amnnp2980'; // Substitua por sua senha segura
+$password = '(*)Amnnp2980'; // Substitua por sua senha segura
 $host = 'aws-0-sa-east-1.pooler.supabase.com';
 $port = '6543';
 $dbname = 'postgres';
