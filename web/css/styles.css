@@ -31,11 +31,12 @@ form, .content {
 form input[type="text"],
 form input[type="password"],
 form button {
-    width: 100%;
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-sizing: border-box; /* Para incluir padding e border no cálculo da largura */
 }
 
 form button {
