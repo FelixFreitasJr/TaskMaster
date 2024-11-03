@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-$user = 'postgres.udewqztaiamosvawtzdv';
-$password = '(*)Amnnp2980'; // Substitua por sua senha segura
-$host = 'aws-0-sa-east-1.pooler.supabase.com';
-$port = '6543';
-$dbname = 'postgres';
+$host = 'udewqztaiamosvawtzdv.supabase.co';
+$db = 'postgres';
+$user = 'postgres';
+$password = 'YOUR_SUPABASE_PASSWORD'; // Substitua pela sua senha segura
 
 try {
-    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+    $conn = new PDO("pgsql:host=$host;dbname=$db", $user, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
