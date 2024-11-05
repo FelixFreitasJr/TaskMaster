@@ -4,7 +4,7 @@ session_start();
 $host = 'udewqztaiamosvawtzdv.supabase.co';
 $db = 'postgres';
 $user = 'postgres';
-$password = '(*)Amnnp2980'; // Substitua pela sua senha segura
+$password = '(*)Amnnp2980'; // Substitua pela sua chave de serviço
 
 try {
     $conn = new PDO("pgsql:host=$host;dbname=$db", $user, $password);
@@ -25,9 +25,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->rowCount() > 0) {
         $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
+        header("Location: ..//index.php");
     } else {
         echo "Login inválido!";
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TaskMaster</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Usuário" required>
+        <input type="password" name="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Não tem uma conta? <a href="register.php">Registre-se aqui</a></p>
+</body>
+</html>
